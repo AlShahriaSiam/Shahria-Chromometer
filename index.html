@@ -171,14 +171,13 @@
 
         // Input validation
         document.querySelectorAll('input').forEach(input => {
-            input.addEventListener('input', (e) => {
-                if (e.target.id === 'hours') {
-                    e.target.value = Math.max(0, parseInt(e.target.value) || 0);
-                } else {
-                    e.target.value = Math.max(0, Math.min(59, parseInt(e.target.value) || 0));
+            input.addEventListener('input', function(e) {
+                if (this.id === 'minutes' || this.id === 'seconds') {
+                    if (this.value > 59) this.value = 59;
+                    if (this.value < 0) this.value = 0;
                 }
             });
         });
     </script>
 </body>
-</html>
+</html> 
